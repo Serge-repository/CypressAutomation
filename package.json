@@ -1,0 +1,22 @@
+{
+  "name": "cypressfirststructure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all_tests": "npx cypress run",
+    "mochawesome_report": "npx cypress run --headed --reporter mochawesome",
+    "chrome": "npx cypress run --browser chrome --headed",
+    "first_structure_spec": "npx cypress run --browser chrome --spec cypress/e2e/FirstStructureTest.spec.js --headed",
+    "dashboard_report": "npx cypress run --browser chrome --spec cypress/e2e/FirstStructureTest.spec.js --headed --record --key 941634ff-49cf-4b0a-9525-cb610430ee8d",
+    "test_cases_set": "npx cypress run --browser chrome --spec \"cypress/e2e/green_kart\" --headed"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.10.0",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^10.1.0",
+    "mochawesome": "^7.1.3"
+  }
+}
