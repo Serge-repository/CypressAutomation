@@ -6,7 +6,7 @@
   "scripts": {
     "all_tests": "npx cypress run",
     "mochawesome_report": "npx cypress run --headed --reporter mochawesome",
-    "chrome": "npx cypress run --browser chrome --headed",
+    "chrome": "npx cypress run --browser chrome",
     "first_structure_spec": "npx cypress run --browser chrome --spec cypress/e2e/FirstStructureTest.spec.js --headed",
     "dashboard_report": "npx cypress run --browser chrome --spec cypress/e2e/FirstStructureTest.spec.js --headed --record --key 941634ff-49cf-4b0a-9525-cb610430ee8d",
     "test_cases_set": "npx cypress run --browser chrome --spec \"cypress/e2e/green_kart\" --headed"
