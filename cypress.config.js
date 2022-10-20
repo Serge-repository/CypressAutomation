@@ -19,6 +19,7 @@ module.exports = defineConfig({
   // custom variables
   env: {
     url: "https://rahulshettyacademy.com/angularpractice/",
-    apiBaseUrl: "http://dummy.restapiexample.com"
+    apiBaseUrl: "http://dummy.restapiexample.com",
+    apiBaseUrl2: "https://reqres.in"
   }
 });
