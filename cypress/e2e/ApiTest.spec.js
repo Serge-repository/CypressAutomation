@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Api test suite', () => {
+    let userId = "";
+    const authToken = "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
 // tests on this domain may be flaky
 
     it('Get all employee data', {tags:['api', 'regression']}, () => {
@@ -74,7 +76,7 @@ describe('Api test suite', () => {
             method: "POST",
             url: Cypress.env("apiBaseUrl3") + "/public/v1/users",
             headers: {
-                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+                "authorization": authToken
             },
             body: {
                 "name": "Elzar",
@@ -85,13 +87,13 @@ describe('Api test suite', () => {
         }).then((response) => {
             expect(response.body.data).has.property("name", "Elzar");
         }).then((response) => {
-            const userId = response.body.data.id
-            cy.log("user id is " + userId)
+            userId = response.body.data.id;
+            cy.log("user id is " + userId);
             cy.request({
                 method: "PUT",
                 url: Cypress.env("apiBaseUrl3") + "/public/v1/users/" + userId,
                 headers: {
-                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+                "authorization": authToken
             },
             body: {
                 "name": "Elzar Updated",
@@ -102,13 +104,12 @@ describe('Api test suite', () => {
             })
         }).then((response) => {
             expect(response.body.data).has.property("name", "Elzar Updated");
-        }).then((response) => {
-            const userId = response.body.data.id
+        }).then(() => {
             cy.request({
                 method: "DELETE",
                 url: Cypress.env("apiBaseUrl3") + "/public/v1/users/" + userId,
                 headers: {
-                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+                "authorization": authToken
                 }
             })
         }).then((response) => {
