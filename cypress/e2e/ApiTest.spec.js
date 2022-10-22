@@ -47,4 +47,72 @@ describe('Api test suite', () => {
             expect(response.body).has.property("name", "morpheus");
         })
     })
+
+    //not working example
+    // it('Pass JSON Value/Array from one request to another', () => {
+    //     cy.request({
+    //         method: "GET",
+    //         url: Cypress.env("weatherApi") + "/api/location/search/?query=San",
+    //     }).then((response) => {
+    //         const city = response.body[0].title
+    //         return city
+    //     }).then((city) => {
+    //         // for (let i=0; i<city.length; i++)
+    //         cy.request({
+    //             method: "GET",
+    //             url: Cypress.env("weatherApi") + "/api/location/search/?query=" + city   // + city[i].title
+    //         }).then((response) => {
+    //             expect(response.status).to.eq(200);
+    //             expect(response.body[0]).to.have.property("title", city);
+    //         })
+    //     })
+    // })
+
+    it('POST + PUT + DELETE request', () => {
+        // always put new address before run
+        cy.request({
+            method: "POST",
+            url: Cypress.env("apiBaseUrl3") + "/public/v1/users",
+            headers: {
+                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+            },
+            body: {
+                "name": "Elzar",
+                "email": "elzar097@kiehn-stamm.io",
+                "gender": "male",
+                "status": "active"
+            }
+        }).then((response) => {
+            expect(response.body.data).has.property("name", "Elzar");
+        }).then((response) => {
+            const userId = response.body.data.id
+            cy.log("user id is " + userId)
+            cy.request({
+                method: "PUT",
+                url: Cypress.env("apiBaseUrl3") + "/public/v1/users/" + userId,
+                headers: {
+                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+            },
+            body: {
+                "name": "Elzar Updated",
+                "email": "elzar097@kiehn-stamm.io",
+                "gender": "male",
+                "status": "active"
+                }
+            })
+        }).then((response) => {
+            expect(response.body.data).has.property("name", "Elzar Updated");
+        }).then((response) => {
+            const userId = response.body.data.id
+            cy.request({
+                method: "DELETE",
+                url: Cypress.env("apiBaseUrl3") + "/public/v1/users/" + userId,
+                headers: {
+                "authorization": "Bearer 2a7e7908b02b43b6859058b0e7fdcc21de4c6bc716cf66cc91915f5635488d78"
+                }
+            })
+        }).then((response) => {
+            expect(response.status).to.eq(204);
+        })
+    })
 })

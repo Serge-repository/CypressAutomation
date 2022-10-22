@@ -20,6 +20,8 @@ module.exports = defineConfig({
   env: {
     url: "https://rahulshettyacademy.com/angularpractice/",
     apiBaseUrl: "http://dummy.restapiexample.com",
-    apiBaseUrl2: "https://reqres.in"
+    apiBaseUrl2: "https://reqres.in",
+    apiBaseUrl3: "https://gorest.co.in",
+    weatherApi: "https://metaweather.com"
   }
 });
