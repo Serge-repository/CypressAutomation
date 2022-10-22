@@ -3,14 +3,14 @@
 describe('Api test suite', () => {
 // tests on this domain may be flaky
 
-    it('Get all employee data', () => {
+    it('Get all employee data', {tags:['api', 'regression']}, () => {
         cy.request("GET", Cypress.env("apiBaseUrl") + "/api/v1/employees").then(function(response) {
             expect(response.status).to.eq(200);
             expect(response.duration).to.be.lessThan(2500);
         })
     })
 
-    it('Check response body', () => {
+    it('Check response body', {tags:'smoke'}, () => {
         cy.request({
             method: "GET",
             url: Cypress.env("apiBaseUrl") + "/api/v1/employees"
