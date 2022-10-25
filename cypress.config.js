@@ -7,8 +7,8 @@ module.exports = defineConfig({
   
   projectId: "jxycim",
   reporter: "mochawesome",
-  defaultCommandTimeout: 8000,
-  pageLoadTimeout: 10000,
+  defaultCommandTimeout: 20000,
+  pageLoadTimeout: 20000,
   e2e: {
     // baseUrl: 'http://localhost:4201',
     // e2e folder to recognise files as test specs
