@@ -13,7 +13,8 @@ module.exports = defineConfig({
     // baseUrl: 'http://localhost:4201',
     // e2e folder to recognise files as test specs
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
-    excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*']
+    excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*'],
+    experimentalSessionAndOrigin: true
   },
 
   // custom variables
