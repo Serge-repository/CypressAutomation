@@ -2,7 +2,7 @@
 
 describe("Cookies training", () => {
 
-    before(() => {
+    beforeEach(() => {
         cy.session("firstSession", () => {
             cy.visit('https://demo.guru99.com/test/cookie/selenium_aut.php');
             cy.get("[name=username]").type("abc123");
@@ -39,12 +39,17 @@ describe("Cookies training", () => {
 
       })
 
-    it("Handling cookies example", () => {
+    it("Cookies example 1", () => {
         cy.visit("https://demo.guru99.com/test/cookie/selenium_aut.php");
         cy.get("h2 center").should("have.text", "You are logged In");
     })
 
-    it("Handling origin example", () => {
+    it("Cookies example 2", () => {
+        cy.visit("https://demo.guru99.com/test/cookie/selenium_aut.php");
+        cy.get("h2 center").should("have.text", "You are logged In");
+    })
+
+    it("Handling origin (SSO) example", () => {
         cy.visit("https://demo.guru99.com/test/cookie/selenium_aut.php");
         cy.origin("www.dummies.com", () => {
             cy.visit("www.dummies.com/");
