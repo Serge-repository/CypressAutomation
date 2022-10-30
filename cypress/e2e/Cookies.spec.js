@@ -58,4 +58,15 @@ describe("Cookies training", () => {
         cy.visit("https://demo.guru99.com/test/cookie/selenium_aut.php");
     })
 
+    it("Handling origin (SSO) example 2", () => {
+        cy.visit("https://courses.rahulshettyacademy.com/");
+        cy.origin("sso.teachable.com", () => {
+            cy.visit("https://sso.teachable.com/secure/9521/identity/login/password");
+            cy.get("input#email").type("testuser5186@gmail.com");
+            cy.get("input#password").type("admin11");
+            cy.get("input[type=submit]").click();
+        })
+        cy.visit("https://courses.rahulshettyacademy.com/");
+    })
+
 })
